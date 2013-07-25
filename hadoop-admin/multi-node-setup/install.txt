@@ -26,6 +26,10 @@ install hadoop on every node, follow the single install instructions
 
 -- step )
 make sure that hadoop command is on the path (make a link in /usr/bin)
+Make this link:
+ /usr/bin/hadoop -> /home/ec2-user/hadoop/bin/hadoop
+That is
+ sudo ln -s /home/ec2-user/hadoop/bin/hadoop /usr/bin/hadoop
 
 -- step )
 set up hadoop data dir : /hadoop/hadoop-data
