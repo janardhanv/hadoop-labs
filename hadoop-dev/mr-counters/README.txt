@@ -65,3 +65,8 @@ B) from job tracker UI
 also check the console logs, you should see the counter printed out something like this:
     hi.mr.CounterAnswer$MyMapper$Counters
         BAD_RECORDS=5
+
+
+TODO :  add this to lab
+mapred job -counter job_201307222312_0093  'hi.mr.Counter$MyMapper$Counters'  'BAD_RECORDS'
+5
