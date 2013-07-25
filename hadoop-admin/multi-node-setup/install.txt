@@ -21,7 +21,11 @@ we should see the following output from all nodes!
     Java(TM) SE Runtime Environment (build 1.6.0_45-b06)
     Java HotSpot(TM) 64-Bit Server VM (build 20.45-b01, mixed mode)
 
+-- step )
+install hadoop on every node, follow the single install instructions
 
+-- step )
+make sure that hadoop command is on the path (make a link in /usr/bin)
 
 -- step )
 set up hadoop data dir : /hadoop/hadoop-data
@@ -32,6 +36,10 @@ set up hadoop data dir : /hadoop/hadoop-data
 set up hdfs dirs
 
     $  ~/scripts/cluster-cmd.sh  -h ~/hosts.all  "sudo mkdir -p /hadoop/hadoop-data/dfs/name  /hadoop/hadoop-data/dfs/data   /hadoop/hadoop-data/namesecondary"
+
+    $ ~/scripts/cluster-cmd.sh  -h ~/hosts.all "sudo groupadd hadoop"
+    $ ~/scripts/cluster-cmd.sh  -h ~/hosts.all "sudo useradd hdfs -g hadoop"
+    $ ~/scripts/cluster-cmd.sh  -h ~/hosts.all "sudo useradd mapred -g hadoop"
 
     $  ~/scripts/cluster-cmd.sh  -h ~/hosts.all  "sudo chown -R hdfs:hadoop /hadoop/hadoop-data/dfs"
 
@@ -46,6 +54,7 @@ set up mapred dirs
 configure hadoop
 sample config files are provided in :   ~/hi/hadoop-labs/hadoop-admin/config/multi-node
 Let us copy these files into hadoop config dir  /etc/hadoop
+    $   sudo mkdir /etc/hadoop
     $   sudo  cp   ~/hi/hadoop-labs/hadoop-admin/config/multi-node/*   /etc/hadoop/
 
 we need to edit two files to match your system
@@ -87,7 +96,7 @@ it might look like:
 
 -- step )
 distribute the config files.
-    $ ~/scripts/distribute-config.sh    -h   ~/hosts.slave
+    $ ~/scripts/distribute-config.sh    -h   ~/hosts.slaves
 
 
 step )
