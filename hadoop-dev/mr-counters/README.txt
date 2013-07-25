@@ -67,6 +67,21 @@ also check the console logs, you should see the counter printed out something li
         BAD_RECORDS=5
 
 
-TODO :  add this to lab
-mapred job -counter job_201307222312_0093  'hi.mr.Counter$MyMapper$Counters'  'BAD_RECORDS'
-5
+----
+Bonus Lab
+----
+Getting counters in the command line
+Note your jobid (you can get this from console or from mapred UI).  It will look something like  job_201307222312_0093
+the following command can be used to get the counter value from a command line / script
+
+replace <jobid> with actual jobid
+    $ mapred job <jobid>  -counter 'hi.mr.Counter$MyMapper$Counters'  'BAD_RECORDS'
+
+you should get back the counter value.
+
+
+Question : can you write a 'wrapper shell script' to
+- launch mapreduce job wait for completion
+- if the BAD_RECORDS is more than 5% of total input  fire off an email  (or just for this lab, just print out an error message)
+- hints :
+    which counter gives you 'total number of input records'
