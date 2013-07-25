@@ -97,13 +97,18 @@ it might look like:
     </property>
 
 
+-- step) 
+
+ create the /etc/hadoop directory first.
+
+~/scripts/cluster-cmd.sh  -h ~/hosts.slaves  "sudo mkdir -p /etc/hadoop"
 
 -- step )
 distribute the config files.
     $ ~/scripts/distribute-config.sh    -h   ~/hosts.slaves
 
 
-step )
+-- step )
 verify config files are updated on slaves
 login to one slave and inspect the file  /etc/hadoop/core-site.xml
     $ ssh <ip address of slave here>
